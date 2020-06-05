@@ -244,18 +244,17 @@
                         </div>
                         <div class="services-content mt-15">
                             <h4 class="services-title">OpManager</h4>
-                            <p class="mt-20" style="text-align:justify">Para la Configuración de OpManager se crearon dispositivos a los cuales se les agregaron un denominado "monitor"
-                            </p>
+                            <p class="mt-20" style="text-align:justify">svxdvx</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
                 <div class="col-lg-6">
                     <div class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                         <div class="services-icon">
-                            <img src="assets\images\redes\prtg.png" height="400" width="400">
+                            <img src="assets\images\redes\zabbix.jpg" height="400" width="400">
                         </div>
                         <div class="services-content mt-15">
-                            <h4 class="services-title">PRTG</h4>
+                            <h4 class="services-title">Zabbix</h4>
                             <p class="mt-20"style="text-align:justify">Ya que todos los dispositivos fueron Agentes solo necesitábamos los administradores por lo que se instalaron 3, en Windows se instaló PRTG y en Linux se instalaron Zabbix y OpManager en donde en cada uno de ellos se le conectaba o agregaba con los agentes previamente instalados para poder acceder a su información del equipo.</p>
                         </div>
                     </div> <!-- single services -->
@@ -263,11 +262,32 @@
                 <div class="col-lg-12">
                     <div class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                         <div class="services-icon">
-                            <img src="assets\images\redes\zabbix.jpg" height="370" width="450">
+                            <img src="assets\images\redes\prtg.png" height="370" width="450">
                         </div>
                         <div class="services-content mt-15">
-                            <h4 class="services-title">Zabbix</h4>
-                            <p class="mt-20"style="text-align:justify">Ya que todos los dispositivos fueron Agentes solo necesitábamos los administradores por lo que se instalaron 3, en Windows se instaló PRTG y en Linux se instalaron Zabbix y OpManager en donde en cada uno de ellos se le conectaba o agregaba con los agentes previamente instalados para poder acceder a su información del equipo.</p>
+                            <h4 class="services-title">PRTG</h4>
+                            <p class="mt-20"style="text-align:justify">
+                                Este Software de monitoreo fue instalado en el sistema operativo Windows 8.1. La configuración inicial es agregar el "community string" asignado para que al agregar las computadoras puedan validar la comunicación.
+                                <br><br>
+                                De esta manera es posible agregar los dispositivos para comenzar a ser analizados. Estos dispositivos se agregan seleccionando el menú “devices” en la parte superior de la interfaz seguido del botón de "más".
+
+
+                            </p>
+
+                            <img src="assets\images\redes\prtg.png" height="370" width="450">
+                            <p class="mt-20"style="text-align:justify">
+                                Después se escribe un nombre como identificador y el IP necesario para realizar la conexión
+                                <br><br>
+                                Una vez agregado un nuevo dispositivo, podemos agregarle sensores que se comuniquen con el agente del dispositivo para que recuperen la información solicitada. Para agregar un sensor se hace sobre el mismo menú de agregar dispositivos, pero en el menú posterior debes seleccionar el dispositivo al que se le quiera agregar el sensor.
+
+                                <br><br>
+                                Al Seleccionar el equipo, nos trasladara a la sección en donde puedes seleccionar el sensor dependiendo de las necesidades del dispositivo, ya sea de desempeño o de servicios.
+                                <br><br>
+                                Por defecto se mandan alertas cuando un sensor no está dando los resultados esperados. Estas alertas intentan mandar un correo a los administradores del sistema pero no hay datos por lo que se tienen que agregar bajo el menú “Setup->System Administration->Notification Delivery” en donde ponemos la información del servidor de correo en este caso Gmail.
+                                <br><br>
+                                Se creó un segundo método para entregar las alertas cuando algo no está correcto en la red por medio de la plataforma Telegram. Primero se creó un bot en blanco para utilizar como base. Este se agrego al grupo de notificacion deseado y teniendo el URL del bot así como el id del chat al que le mandara las notificaciones podemos ir al menú “Setup->Account Settings->Notification Templates” donde agregamos un nuevo template donde enlazaremos el bot de telegram.
+
+                            </p>
                         </div>
                     </div> <!-- single services -->
                 </div>
