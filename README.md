@@ -1,2 +1,2 @@
 # Redes-html
-Html utilizado para la docuementación del proyecto final de redes
+Html utilizado para la documentación del proyecto final de redes
