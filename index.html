@@ -1,3 +1,5 @@
+
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -260,7 +262,7 @@
                         </div>
                         <div class="services-content mt-15">
                             <h4 class="services-title">Zabbix</h4>
-                            <p class="mt-20"style="text-align:justify">
+                            <p class="mt-20" style="text-align:justify">
                                 La versión que se utilizo de Zabbix fue la 5.0
                                 <br><br>
                                 El servidor de Zabbix se utilizó exclusivamente en la red derecha o LAN 2 y fue pre-configurada para contar con todos los requerimientos y paquetes que necesita Zabbix. 
@@ -270,68 +272,135 @@
                                 Zabbix cuenta con un agente que se instala en los equipos a monitorear que permite omitir el proceso del SMNP y simplemente conectar ambos equipos tras la instalación del agente.
 
                                 <br><br>
+                                <img src="assets\images\Zabbix\pfsenseconf1.png"  class="center"  width="350" style="border-radius: 20px;" >
+                                <br>
+                                <img src="assets\images\Zabbix\pfsenseconf2.png" class="center"  width="750" style="border-radius: 20px;">
+                                <br>
+                                <img src="assets\images\Zabbix\pfsenseconf3.png" class="center"  width="750" style="border-radius: 20px;">
+                                <br>   
+                                <img src="assets\images\Zabbix\pfsenseconf4.png" class="center"  width="500" style="border-radius: 20px;">
+
+                                <br><br>
                                 Zabbix utiliza otros métodos de encriptación que resultaron un poco más complicados de implementar, 
                                 por lo que no se incluyo algun tipo de encriptación o seguridad a la hora de que los equipos se comuniquen con el servidor.
 
                                 <br><br>
                                 En lugar de esto se utilizo pfSense para configurar un par de reglas que le permitieron a Zabbix monitorear a los dispositivos pfSense de la red.
 
+                                
                                 <br><br>
-                                <img src="assets\images\Zabbix\pfsenseconf1.png" height="400" width="350" >
-                                <img src="assets\images\Zabbix\pfsenseconf2.png" >
-                                <img src="assets\images\Zabbix\pfsenseconf3.png" >
                                 Una vez instalada se agrega una vista de configuración similar como la siguiente.
                                 <br><br>
-                                <img src="assets\images\Zabbix\zabbix-dashboard.png" >
+                                <img src="assets\images\Zabbix\zabbix-dashboard.png" class="center" style="border-radius: 20px;" >
                                 <br><br>
-                                Una vez ingresada la dirección IP del servidor, no es necesario ingresar el hostname, pero para agregar una medida extra de conexión se recomienda incluirla de todas formas. Una vez especificado esto, se procedió a declarar las reglas de firewall.
+                                Al ingresar la dirección IP del servidor, no es necesario ingresar el hostname, 
+                                pero para agregar una medida extra de conexión se recomienda incluirla de todas formas. 
+                                Una vez especificado esto, se procedió a declarar las reglas de firewall.
+                                <br><br>
+                                <img src="assets\images\Zabbix\firewallrules.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <br><br>
+                                Con estas reglas se asegura que la máquina pfSense pueda recibir las peticiones de Zabbix por medio del puerto 10050-10051 y que pueda devolverle la información
+                                sobre el sistema al servidor.
+                                Mientras que la conexión entre los equipos Debian de la red es de manera directa, el firewall podría parecer fácil de omitir, 
+                                pero como se explicó antes Zabbix necesita estas reglas para poder monitorear el equipo por medio del agente.
 
                                 <br><br>
-                                Con estas reglas se asegura que la máquina pfSense pueda recibir las peticiones de Zabbix por medio del puerto 10050-10051 y que pueda devolverle la información sobre el sistema al servidor. Mientras que la conexión entre los equipos Debian de la red es de manera directa, el firewall podría parecer fácil de omitir, pero como se explicó antes Zabbix necesita estas reglas para poder monitorear el equipo por medio del agente.
+                                <img src="assets\images\Zabbix\zabbix-hosts.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <br><br>
+                                Después de esto simplemente se agrega un nuevo Host en la configuración de Zabbix que coincida con la IP del equipo.
+                                <br>
+                                Para agregar los <b>sensores</b> necesarios se navega a la pestaña de Templates y se eligen los sensores que se requieran.
 
                                 <br><br>
-                                Después de esto simplemente se agrega un nuevo Host en la configuración de Zabbix que coincida con la IP del equipo y para conveniencia a la hora de buscar, se encuentre bajo una categoría. Para agregar los sensores necesarios se navega a la pestaña de Templates y se eligen los sensores que se requieran.
+                                <img src="assets\images\Zabbix\zabbix-templates.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <br><br>
+                                Si la configuración es correcta, el servidor buscará que el agente se pueda comunicar devuelta, acción que toma alrededor de <b>dos minutos</b>. 
+                                Después de esto se podrá acceder a la máquina para  observar la información de cada sensor.
 
                                 <br><br>
-                                Si la configuración es correcta, el servidor buscará que el agente se pueda comunicar devuelta, acción que toma alrededor de dos minutos. Después de esto se podrá acceder a la máquina para  observar la información de cada sensor.
+                                <img src="assets\images\Zabbix\zabbix-graphs.png"  class="center"  width="700" style="border-radius: 20px;">
+                                <br><br>
+                                
+                                Para los servidores Debian, se instala el agente de Zabbix con la siguiente instrucción: <b>apt install zabbix-agent</b>
+                                
+                                <br><br>
+                                Si se desea confirmar que el agente esté funcionando correctamente se ejecuta la siguiente instrucción: <b>service zabbix-agent status</b>
 
                                 <br><br>
-                                Para los servidores Debian, se instala el agente de Zabbix con la siguiente instrucción: apt install zabbix-agent
+                                Una vez instalado, es necesario realizar una pequeña modificación para que el agente pueda comunicarse con el servidor.
+                                <br> 
+                                Hay que abrir el archivo conf del agente: <b>vim /etc/zabbix/zabbix_agentd.conf</b>
+                                
+                                <br><br>
+                                <img src="assets\images\Zabbix\config.png"  class="center"  width="600" style="border-radius: 20px;">
+                                <br><br>
+                                La línea <b>Server</b> indica cuáles direcciones podrán intercambiar mensajes por los puertos 10050 y 10051 ya predeterminados de Zabbix. 
+                                <br>
+                                A este se tiene que agregar la dirección del servidor junto a la del cliente local, 
+                                siguiendo la lógica de las dos reglas que se agregaron al firewall en la instalación para pfSense.
+                                <br> 
+                                Una vez editado esto, solo se agrega el host correspondiente en el servidor como se vio en los pasos de pfSense 
+                                y después de unos minutos se empezará a recibir información proveniente del agente.
 
                                 <br><br>
-                                Si se desea confirmar que el agente esté funcionando correctamente se ejecuta la siguiente instrucción: service zabbix-agent status
+                                La configuración de OPNsense fue casi idéntica a la de pfSense, 
+                                solo que la interfaz es distinta y no tuvimos acceso directo a ella. 
+                                <br>
+                                Para configurar las dos máquinas OPNsense de esta red tuvimos que comunicarnos con el equipo respectivo 
+                                y guiarlos en el proceso de instalación y configuración. 
+                                A continuación se muestran algunas capturas de pantalla obtenidas de un sitio web:
 
                                 <br><br>
-                                Una vez instalado, es necesario realizar una pequeña modificación para que el agente pueda comunicarse con el servidor. Hay que abrir el archivo conf del agente. vim /etc/zabbix/zabbix_agentd.conf
+                                <img src="assets\images\Zabbix\opnsense.png"  class="center"  width="600" style="border-radius: 20px;">
+                                <br><br>
+                                Tras instalar el plugin de Zabbix se procede a realizar una configuración muy similar a la de pfSense 
+                                donde se declara el puerto a utilizar, las IPs que van a escuchar y las IPs que van a participar en este protocolo. 
+                                Como se hizo anteriormente, al terminar de configurar esto por parte del agente, se agrega el host respectivo dentro del servidor 
+                                y se espera a que la comunicación se refresque y los datos comiencen a llegar.
 
                                 <br><br>
-                                La línea server indica cuáles direcciones podrán intercambiar mensajes por los puertos 10050 y 10051, los predeterminados de Zabbix. A este se tiene que agregar la dirección del servidor junto a la del cliente local, siguiendo la lógica de las dos reglas que se agregaron al firewall en la instalación para pfSense. Una vez editado esto, solo se agrega el host correspondiente en el servidor como se vio en los pasos de pfSense y después de unos minutos se empezará a recibir información proveniente del agente.
+                                Para las alertas se creó un Trigger que detectara cuando un problema surgiera en alguno de los servicios pertenecientes 
+                                a alguna de las máquinas que se dieron de alta en nuestro servidor.
 
                                 <br><br>
-                                La configuración de OPNsense fue casi idéntica a la de pfSense, solo que la interfaz es distinta y no tuvimos acceso directo a ella. Para configurar las dos máquinas OPNsense de esta red tuvimos que comunicarnos con el equipo respectivo y guiarlos en el proceso de instalación y configuración. A continuación se muestran algunas capturas de pantalla obtenidas de un sitio web:
+                                <img src="assets\images\Zabbix\zabbix-alerts.png"  class="center"  width="1000" style="border-radius: 20px;">
+                                <br><br>
+                                Esta alerta es la encargada de mandar los correos electrónicos y las notificaciones de Telegram, con sus configuraciones respectivas. 
+                                <br>
+
+                                La configuración del correo electrónico se llevó a cabo por medio de <b>Media Types</b>, una función de Zabbix que permite configurar rápidamente 
+                                distintos servicios de correo electronico o mensajeria con el propósito de generar alarmas.
+                                <br> Para la configuración de correo electrónico basto con 
+                                especificar un servidor SMTP y la cuenta perteneciente a dicho servidor.
 
                                 <br><br>
-                                Tras instalar el plugin de Zabbix se procede a realizar una configuración muy similar a la de pfSense donde se declara el puerto a utilizar, las IPs que van a escuchar y las IPs que van a participar en este protocolo. Como se hizo anteriormente, al terminar de configurar esto por parte del agente, se agrega el host respectivo dentro del servidor y se espera a que la comunicación se refresque y los datos comiencen a llegar.
-
+                                <img src="assets\images\Zabbix\email.png"  class="center"  width="800" style="border-radius: 20px;">
                                 <br><br>
-                                Para las alertas se creó un Trigger que detectara cuando un problema surgiera en alguno de los servicios pertenecientes a alguna de las máquinas que se dieron de alta en nuestro servidor.
-
+                                Para que la acción de Trigger pudiera mandar exitosamente el correo electrónico fue necesario configurar el usuario administrador, 
+                                para que manejara las distintas cuentas de correo de todos los integrantes del equipo.
                                 <br><br>
-                                Esta alerta es la encargada de mandar los correos electrónicos y las notificaciones de Telegram, los cuales fueron configurados aparte. La configuración del correo electrónico se llevó a cabo por medio de Media Types, una función de Zabbix que permite configurar rápidamente distintos servicios de correo electronico o mensajeria con el propósito de generar alarmas. Para la configuración de correo electrónico basto con especificar un servidor SMTP y la cuenta perteneciente a dicho servidor.
-
+                                <img src="assets\images\Zabbix\users.png"  class="center"  width="800" style="border-radius: 20px;">
                                 <br><br>
-                                Para que la acción de Trigger pudiera mandar exitosamente el correo electrónico fue necesario configurar el usuario administrador para que manejara las distintas cuentas de correo de todos los integrantes del equipo.
-                                <br><br>
-                                Telegram requirió un poco más de configuracion externa. Primero se creó un bot de Telegram que se encargara de recibir estos mensajes y mandarlos a un grupo de chat mediante un webhook.
+                                Telegram requirió un poco más de configuracion externa. 
+                                Primero se creó un bot de Telegram que se encargara de recibir estos mensajes y mandarlos a un grupo de chat mediante un webhook.
 
 
                                 <br><br>
-                                Devuelta en el servidor de Zabbix, se utilizó el token del bot para que este recibiera los mensajes de las alarmas. Similar al correo electronico, se modificó al usuario administrador para que el destino de los mensajes fuera el grupo de Telegram creado anteriormente.
+                                <img src="assets\images\Zabbix\telegram-alerts.png"  class="center"  width="400" style="border-radius: 20px;">
+                                <br><br>
+                                Devuelta en el servidor de Zabbix, se utilizó el token del bot para que este recibiera los mensajes de las alarmas. 
+                                Similar al correo electronico, se modificó al usuario administrador para que el destino de los mensajes fuera el grupo de Telegram creado anteriormente.
 
+                                <br><br>
+                                
+                                <img src="assets\images\Zabbix\telegram-alerts2.png"  class="center"  width="750" style="border-radius: 20px;">
                                 <br><br>
                                 Y con esto se concluyo la configuración de nuestro servidor Zabbix en la red derecha.
 
                                 <br><br>
+
+
+
                             </p>
                         </div>
                     </div> <!-- single services -->
@@ -465,6 +534,7 @@
                     <div class="section-title text-center pb-20">
                         <h5 class="sub-title mb-15">Contact us</h5>
                         <h2 class="title">Get In touch</h2>
+                        <h2>Help Please </h2>>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -500,7 +570,22 @@
 
     <!--====== BACK TO TOP PART ENDS ======-->
 
+    <!--====== PART START ======-->
+
+    <!--
+    <section class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-"></div>
+            </div>
+        </div>
+    </section>
+-->
+
     <!--====== PART ENDS ======-->
+
+
+    <!-- row -->
 
     <!--====== jquery js ======-->
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
@@ -527,4 +612,5 @@
     <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
