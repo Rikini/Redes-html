@@ -230,7 +230,7 @@
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
-            <div class="row justify-content-center">
+            <div  class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                         <div class="services-icon">
@@ -245,24 +245,71 @@
                         </div>
                     </div> <!-- single services -->
                 </div>
-                <div class="col-lg-12">
+                <div id="opmanager" class="col-lg-12">
                     <div class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">
                         <div class="services-icon">
                             <img src="assets\images\redes\opmanager.jpg" height="320" width="500">
                         </div>
                         <div class="services-content mt-15">
                             <h4 class="services-title">OpManager</h4>
-                            <p class="mt-20" style="text-align:justify">OpManager fue instalado en LinuxMint, el primer paso para su utilización es correr OpenManager por la terminal utilizando
-                            <br>- sudo sh run.sh <br> Posteriormente ingresar a la dirección 127.0.0.1:8060. En OpManager se agregaron distintas direcciones IPs las cuales estan ligadas a un
-                            dispositivo el cual se le agrego un sistema de monitoreo denominado "monitor".
-                            <br>Para las alarmas se implemento notificaciones por correo, donde se asigna de donde se quiere enviar el correo, los destinatarios, la información a mandar en el mensaje y el tiempo despues
-                            del evento para enviar el correo.
-                            <br>También se definió el community string, donde se configuran las credenciales para insertar dicho string a un monitor de servicio.</p>
+                            <p class="mt-20" style="text-align:justify">OpManager es un NMS instalado en LinuxMint, el primer paso para su utilización es correr OpenManager por la terminal utilizando
+                            <br>- sudo sh run.sh <br> 
+                            <img src="assets\images\opmanager\terminal.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\terminal2.png" class="center" style="border-radius: 20px;"> <br>
+                            Posteriormente ingresar a la dirección 127.0.0.1:8060, Utilizando tu navegador. Introduciendo el usuario y la contraseña se debera desplegar el dashboard principal.
+                            <img src="assets\images\opmanager\navegador.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\dashboard-p.png" class="center" style="border-radius: 20px;"> <br> <br>
+                             <b>Para agregar devices </b> <br>
+                            1.- En la parte principal en la sección Inventory y selecccionar la opción de Devices. <br>
+                            2.- En la parte derecha de la pantalla, dar click en el botón "Add Device". <br>
+                            3.- De ahí insertar la nueva IP y las credenciales que se desea.
+                            <img src="assets\images\opmanager\device-1.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\device-2.png" class="center" style="border-radius: 20px;"> <br>
+                            <b>Para agregar monitoreo </b> <br>
+                            1.- Se debe de seleccionar primero el device a monitorear, (para nuestro caso de uso usaremos PfSenseIZQ). <br>
+                            2.- Seleccionar la opción de "Monitors". <br>
+                            3.- En esta pantalla dar click en el botón verde "Actions" y seleccionar la opción de "Add performance monitor". <br>
+                            4.- Se desplegara una pantalla donde se enlistan todos los monitores a deployar, en este caso se selecciono SysUpTime. <br>
+                            5.- Al ser seleccionado el monitor, dar click al simbolo de grafica y se desplegara una grafica leyendo los datos. <br>
+                            <img src="assets\images\opmanager\monitor-1.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\monitor-2.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\monitor-3.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\monitor-4.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\monitor-5.png" class="center" style="border-radius: 20px;"> <br> <br>
+                            <b>Para agregar notificaciones al correo </b> <br>
+                            1.- En el dashboard principal, seleccionar Settings y dentro de el selccionar "Mail Server Settings" <br>
+                            2.- Agregar la información: Remitente, Destinarios, puerto y tiempo antes de envio, incluyendo también los detalles de la conexión segura.<br>
+                            3.- Se necesita agregar la notificación al device, por lo que se entra al dispositivo y se da click en el símbolo del correo. <br>
+                            4.- Se da click en el botón de Add.<br>
+                            5.- Se selecciona la opción de correo <br>
+                            <img src="assets\images\opmanager\email.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-2.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-3.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-4.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-5.png" class="center" style="border-radius: 20px;"> <br>
+                            6.- Se debe de escoger de nuevo el Remitente, Destinarios y la información a enviar en el correo.<br>
+                            7.- Aqui se seleccionan las opciones sobre cuantas veces envia la notificación. <br>
+                            8.- Al dar "Next" se define a cuantos minutos de dicho error debe de mandar la notificación. <br>
+                            9.- Por úlimo agregar nombre al profile y dar "Save" la notificación debera ser agregrada.<br>
+                            <img src="assets\images\opmanager\email-6.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-7.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-8.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-9.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\email-10.png" class="center" style="border-radius: 20px;"> <br>
+                            <b>Community String </b> <br>
+                            1.- Entrar a Settings y seleccionar la opción de credentials.<br>
+                            2.- Dar click al botón derecho de "Add Credential".<br>
+                            3.- Seleccionar las opciones necesarias y en SNMP read credential, escribir el community string. Para agregar el monitor de servicio, seleccionar el dispositivo e ir a la seccion de service monitors. <br>
+                            4.- Seleccionar actions, add monitor y agregar la información requerida.<br>
+                            <img src="assets\images\opmanager\com-string-1.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\com-string-2.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\com-string-3.png" class="center" style="border-radius: 20px;"> <br>
+                            <img src="assets\images\opmanager\com-string-4.png" class="center" style="border-radius: 20px;"> <br>
                         </div>
                     </div> <!-- single services -->
                 </div>
-                <div class="col-lg-12">
-                    <div class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
+                <div id="zabbix" class="col-lg-12">
+                    <div  class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                         <div class="services-icon">
                             <img src="assets\images\redes\zabbix.jpg" height="400" width="400">
                         </div>
@@ -278,13 +325,13 @@
                                 Zabbix cuenta con un agente que se instala en los equipos a monitorear que permite omitir el proceso del SMNP y simplemente conectar ambos equipos tras la instalación del agente.
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\pfsenseconf1.png"  class="center"  width="350" style="border-radius: 20px;" >
+                                <img src="assets\images\Zabbix\pfsenseconf1.PNG"  class="center"  width="350" style="border-radius: 20px;" >
                                 <br>
-                                <img src="assets\images\Zabbix\pfsenseconf2.png" class="center"  width="750" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\pfsenseconf2.PNG" class="center"  width="750" style="border-radius: 20px;">
                                 <br>
-                                <img src="assets\images\Zabbix\pfsenseconf3.png" class="center"  width="750" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\pfsenseconf3.PNG" class="center"  width="750" style="border-radius: 20px;">
                                 <br>   
-                                <img src="assets\images\Zabbix\pfsenseconf4.png" class="center"  width="500" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\pfsenseconf4.PNG" class="center"  width="500" style="border-radius: 20px;">
 
                                 <br><br>
                                 Zabbix utiliza otros métodos de encriptación que resultaron un poco más complicados de implementar, 
@@ -297,13 +344,13 @@
                                 <br><br>
                                 Una vez instalada se agrega una vista de configuración similar como la siguiente.
                                 <br><br>
-                                <img src="assets\images\Zabbix\zabbix-dashboard.png" class="center" style="border-radius: 20px;" >
+                                <img src="assets\images\Zabbix\zabbix-dashboard.PNG" class="center" style="border-radius: 20px;" >
                                 <br><br>
                                 Al ingresar la dirección IP del servidor, no es necesario ingresar el hostname, 
                                 pero para agregar una medida extra de conexión se recomienda incluirla de todas formas. 
                                 Una vez especificado esto, se procedió a declarar las reglas de firewall.
                                 <br><br>
-                                <img src="assets\images\Zabbix\firewallrules.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\firewallrules.PNG"  class="center"  width="800" style="border-radius: 20px;">
                                 <br><br>
                                 Con estas reglas se asegura que la máquina pfSense pueda recibir las peticiones de Zabbix por medio del puerto 10050-10051 y que pueda devolverle la información
                                 sobre el sistema al servidor.
@@ -311,20 +358,20 @@
                                 pero como se explicó antes Zabbix necesita estas reglas para poder monitorear el equipo por medio del agente.
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\zabbix-hosts.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\zabbix-hosts.PNG"  class="center"  width="800" style="border-radius: 20px;">
                                 <br><br>
                                 Después de esto simplemente se agrega un nuevo Host en la configuración de Zabbix que coincida con la IP del equipo.
                                 <br>
                                 Para agregar los <b>sensores</b> necesarios se navega a la pestaña de Templates y se eligen los sensores que se requieran.
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\zabbix-templates.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\zabbix-templates.PNG"  class="center"  width="800" style="border-radius: 20px;">
                                 <br><br>
                                 Si la configuración es correcta, el servidor buscará que el agente se pueda comunicar devuelta, acción que toma alrededor de <b>dos minutos</b>. 
                                 Después de esto se podrá acceder a la máquina para  observar la información de cada sensor.
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\zabbix-graphs.png"  class="center"  width="700" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\zabbix-graphs.PNG"  class="center"  width="700" style="border-radius: 20px;">
                                 <br><br>
                                 
                                 Para los servidores Debian, se instala el agente de Zabbix con la siguiente instrucción: <b>apt install zabbix-agent</b>
@@ -338,7 +385,7 @@
                                 Hay que abrir el archivo conf del agente: <b>vim /etc/zabbix/zabbix_agentd.conf</b>
                                 
                                 <br><br>
-                                <img src="assets\images\Zabbix\config.png"  class="center"  width="600" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\config.PNG"  class="center"  width="600" style="border-radius: 20px;">
                                 <br><br>
                                 La línea <b>Server</b> indica cuáles direcciones podrán intercambiar mensajes por los puertos 10050 y 10051 ya predeterminados de Zabbix. 
                                 <br>
@@ -357,7 +404,7 @@
                                 A continuación se muestran algunas capturas de pantalla obtenidas de un sitio web:
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\opnsense.png"  class="center"  width="600" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\opnsense.PNG"  class="center"  width="600" style="border-radius: 20px;">
                                 <br><br>
                                 Tras instalar el plugin de Zabbix se procede a realizar una configuración muy similar a la de pfSense 
                                 donde se declara el puerto a utilizar, las IPs que van a escuchar y las IPs que van a participar en este protocolo. 
@@ -369,7 +416,7 @@
                                 a alguna de las máquinas que se dieron de alta en nuestro servidor.
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\zabbix-alerts.png"  class="center"  width="1000" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\zabbix-alerts.PNG"  class="center"  width="1000" style="border-radius: 20px;">
                                 <br><br>
                                 Esta alerta es la encargada de mandar los correos electrónicos y las notificaciones de Telegram, con sus configuraciones respectivas. 
                                 <br>
@@ -380,26 +427,26 @@
                                 especificar un servidor SMTP y la cuenta perteneciente a dicho servidor.
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\email.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\email.PNG"  class="center"  width="800" style="border-radius: 20px;">
                                 <br><br>
                                 Para que la acción de Trigger pudiera mandar exitosamente el correo electrónico fue necesario configurar el usuario administrador, 
                                 para que manejara las distintas cuentas de correo de todos los integrantes del equipo.
                                 <br><br>
-                                <img src="assets\images\Zabbix\users.png"  class="center"  width="800" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\users.PNG"  class="center"  width="800" style="border-radius: 20px;">
                                 <br><br>
                                 Telegram requirió un poco más de configuracion externa. 
                                 Primero se creó un bot de Telegram que se encargara de recibir estos mensajes y mandarlos a un grupo de chat mediante un webhook.
 
 
                                 <br><br>
-                                <img src="assets\images\Zabbix\telegram-alerts.png"  class="center"  width="400" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\telegram-alerts.PNG"  class="center"  width="400" style="border-radius: 20px;">
                                 <br><br>
                                 Devuelta en el servidor de Zabbix, se utilizó el token del bot para que este recibiera los mensajes de las alarmas. 
                                 Similar al correo electronico, se modificó al usuario administrador para que el destino de los mensajes fuera el grupo de Telegram creado anteriormente.
 
                                 <br><br>
                                 
-                                <img src="assets\images\Zabbix\telegram-alerts2.png"  class="center"  width="750" style="border-radius: 20px;">
+                                <img src="assets\images\Zabbix\telegram-alerts2.PNG"  class="center"  width="750" style="border-radius: 20px;">
                                 <br><br>
                                 Y con esto se concluyo la configuración de nuestro servidor Zabbix en la red derecha.
 
@@ -411,43 +458,41 @@
                         </div>
                     </div> <!-- single services -->
                 </div>
-                <div class="col-lg-12">
+                <div id="prtg" class="col-lg-12">
                     <div class="single-services text-center mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                         <div class="services-icon">
-                            <img src="assets\images\redes\prtg.png" height="370" width="450">
+                            <img src="assets\images\redes\prtg.png">
                         </div>
                         <div class="services-content mt-15">
                             <h4 class="services-title">PRTG</h4>
                             <p class="mt-20"style="text-align:justify">
-                                Este Software de monitoreo fue instalado en el sistema operativo Windows 8.1. La configuración inicial es agregar el "community string" asignado para que al agregar las computadoras puedan validar la comunicación.
-                                <br><br>
-                                De esta manera es posible agregar los dispositivos para comenzar a ser analizados. Estos dispositivos se agregan seleccionando el menú “devices” en la parte superior de la interfaz seguido del botón de "más".
-
-
-                            </p>
-
-                            <img src="assets\images\redes\prtg.png" height="370" width="450">
-                            <p class="mt-20"style="text-align:justify">
-                                Después se escribe un nombre como identificador y el IP necesario para realizar la conexión
-                                <br><br>
-                                Una vez agregado un nuevo dispositivo, podemos agregarle sensores que se comuniquen con el agente del dispositivo para que recuperen la información solicitada. Para agregar un sensor se hace sobre el mismo menú de agregar dispositivos, pero en el menú posterior debes seleccionar el dispositivo al que se le quiera agregar el sensor.
-
-                                <br><br>
-                                Al Seleccionar el equipo, nos trasladara a la sección en donde puedes seleccionar el sensor dependiendo de las necesidades del dispositivo, ya sea de desempeño o de servicios.
-                                <br><br>
-                                Por defecto se mandan alertas cuando un sensor no está dando los resultados esperados. Estas alertas intentan mandar un correo a los administradores del sistema, pero no hay datos por lo que se tienen que agregar bajo el menú “Setup->System Administration->Notification Delivery” en donde ponemos la información del servidor de correo. Para casos de prueba se utilizo Gmail.
-                                <br><br>
-                                Se creó un segundo método para entregar las alertas cuando algo no está correcto en la red por medio de la plataforma Telegram. Primero se creó un bot en blanco para utilizar como base. Este se agrego al grupo de notificacion deseado y teniendo el URL del bot así como el id del chat al que le mandara las notificaciones, podemos ir al menú “Setup->Account Settings->Notification Templates” en el cual agregamos un nuevo template donde enlazaremos el bot de telegram.
-                                <br><br>
-                                Se debe encender la opción de “Execute HTTP Action” y agregar el URL y el código que interpreta telegram para el envío de notificaciones.
-                                <br><br>
-                                Ahora para ponerlo a funcionar se necesita acceder al menú “Devices” dentro seleccionar “Notification Triggers” y agregar una nueva regla igual a por defecto pero realizando la acción recién agregada.
-                                <br><br>
-                                Para crear alertas o alarmas personalizadas dentro de la misma aplicación se realiza de la misma manera que como el método de telegram pero habilitando la sección “Add Entry to Event Log” y seleccionando lo que se necesite ya sea una alerta con“Error”, una alarma con “Warning” o mostrar información con “Information”.
-
-                            </p>
-
-
+                                Este Software de monitoreo fue instalado en el sistema operativo Windows 8.1. La configuración inicial es agregar el "community string" asignado para que al agregar las computadoras puedan validar la comunicación.<br>
+                                <img src="assets\images\prtg\com-string-1.png"class="center" style="border-radius: 20px;"> <br>
+                                Ahora es posible agregar los dispositivos para comenzar a ser analizados. Estos dispositivos se agregan seleccionando el menú “devices” en la parte superior de la interfaz seguido del botón de más. <br>
+                                <img src="assets\images\prtg\dev-1.png"class="center" style="border-radius: 20px;"> <br>
+                                Seleccionamos de la estructura en donde queremos agregar el dispositivo. <br>
+                                <img src="assets\images\prtg\dev-2.png"class="center" style="border-radius: 20px;"> <br>
+                                Después se escribe un nombre como identificador y el IP necesario para realizar la conexión. <br>
+                                <img src="assets\images\prtg\dev-3.png"class="center" style="border-radius: 20px;"> <br>
+                                Ahora que tenemos agregado un dispositivo podemos agregarle sensores que se comuniquen con el agente del dispositivo y recuperar la información solicitada. 
+                                Para agregar un sensor se hace en el mismo menú para agregar dispositivos pero el menú en posterior es seleccionar el dispositivo al que se le quiere agregar el sensor. <br>
+                                <img src="assets\images\prtg\sensor.png"class="center" style="border-radius: 20px;"> <br>
+                                Seleccionado el equipo nos traslada a la sección donde puedes seleccionar el sensor dependiendo las necesidades del dispositivo ya sea de desempeño o de servicios.<br>
+                                <img src="assets\images\prtg\sensor-2.png"class="center" style="border-radius: 20px;"> <br>
+                                De manera por defecto manda alertas cuando un sensor no está dando los resultados esperados. Estas alertas intentan mandar un correo a los administradores del sistema pero no hay datos por lo que se tienen que agregar 
+                                bajo el menú “Setup->System Administration->Notification Delivery” en donde ponemos la información del servidor de correo en este caso Gmail. <br>
+                                <img src="assets\images\prtg\sensor-3.png"class="center" style="border-radius: 20px;"> <br>
+                                Se creó un segundo método para entregar las alertas cuando algo no está correcto en la red por medio de la plataforma Telegram. Primero se creó un bot en blanco para utilizar como base. Este se agrego al grupo de 
+                                notificacion deseado y teniendo el URL del bot así como el id del chat al que le mandara las notificaciones podemos ir al menú “Setup->Account Settings->Notification Templates” donde agregamos un nuevo template 
+                                donde enlazaremos el bot de telegram. <br>
+                                Se debe encender la opción de “Execute HTTP Action” y agregar el URL y el código que interpreta telegram para el envío de notificaciones.<br>
+                                <img src="assets\images\prtg\sensor-4.png"class="center" style="border-radius: 20px;"> <br>
+                                <img src="assets\images\prtg\sensor-5.png"class="center" style="border-radius: 20px;"> <br>
+                                Ahora para ponerlo a funcionar se necesita acceder al menú “Devices” dentro seleccionar “Notification Triggers” y agregar una nueva regla igual a por defecto pero realizando la acción recién agregada. <br>
+                                <img src="assets\images\prtg\sensor-6.png"class="center" style="border-radius: 20px;"> <br>
+                                Para crear alertas o alarmas personalizadas dentro de la misma aplicación se realiza de la misma manera que como el método de telegram pero habilitando la sección “Add Entry to Event Log” y 
+                                seleccionando lo que se necesite ya sea una alerta con“Error”, una alarma con “Warning” o mostrar información con “Information”.<br>
+                                <img src="assets\images\prtg\sensor-7.png"class="center" style="border-radius: 20px;"> <br>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -459,7 +504,7 @@
 
     <!--====== TEAM PART START ======-->
 
-    <section id="team" class="team-area pt-125 pb-130 gray-bg">
+    <section id="team" class="team-area pt-125 pb-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -477,7 +522,7 @@
                         </div>
                         <div class="team-content">
                             <h4 class="team-name"><a href="#">Ricardo Ricartti</a></h4>
-                            <span class="sub-title">Chief Designer</span>
+                            <span class="sub-title">OpManager Assistant</span>
                         </div>
                     </div> <!-- single team -->
                 </div>
@@ -488,7 +533,7 @@
                         </div>
                         <div class="team-content">
                             <h4 class="team-name"><a href="#">Andres Delgado</a></h4>
-                            <span class="sub-title">El jefe</span>
+                            <span class="sub-title">OpManager Chief</span>
                         </div>
                     </div> <!-- single team -->
                 </div>
@@ -499,7 +544,7 @@
                         </div>
                         <div class="team-content">
                             <h4 class="team-name"><a href="#">Alejandro Andrade</a></h4>
-                            <span class="sub-title">IT guy</span>
+                            <span class="sub-title">Zabbix Chief</span>
                         </div>
                     </div> <!-- single team -->
                 </div>
@@ -510,7 +555,7 @@
                         </div>
                         <div class="team-content">
                             <h4 class="team-name"><a href="#">Angel Medrano</a></h4>
-                            <span class="sub-title">Chief Engineer</span>
+                            <span class="sub-title">PRTG Chief</span>
                         </div>
                     </div> <!-- single team -->
                 </div>
@@ -521,7 +566,7 @@
                         </div>
                         <div class="team-content">
                             <h4 class="team-name"><a href="#">Javier Pereira</a></h4>
-                            <span class="sub-title">Jack of all trades</span>
+                            <span class="sub-title">Zabbix Assistant</span>
                         </div>
                     </div> <!-- single team -->
                 </div>
