@@ -20,6 +20,12 @@
     1. COMMON css 
 ===========================*/
 @import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700|Hind:400,500,600,700|Quattrocento:400,700");
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; 
+}
 body {
   font-family: 'Hind', sans-serif;
   font-weight: normal;
